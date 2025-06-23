@@ -57,11 +57,12 @@ class OrderItem(models.Model):
     quantity = models.PositiveSmallIntegerField()
     unit_price = models.DecimalField(max_digits=6, decimal_places=2)
     
-   #One to one relationship 
+   #One to Many relationship 
 class Address(models.Model):
     street = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customer = models.ForeignKey(
+        Customer, on_delete=models.CASCADE) #parent
     
 class Cart(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
